@@ -23,6 +23,21 @@
     pre-run: playbooks/pre-publish.yaml
     post-run: playbooks/publish-docs.yaml
 
+- job:
+    name: testbed-deploy-full
+    parent: base-extra-logs
+    nodeset:
+      nodes:
+        - name: orchestrator
+          label: static-testbed
+    run: playbooks/test-run.yaml
+    post-run: playbooks/post.yaml
+    required-projects:
+      - osism/ansible-collection-commons
+      - osism/ansible-collection-services
+      - osism/testbed
+    timeout: 10800
+
 - project:
     merge-mode: squash-merge
     vars:
@@ -32,10 +47,15 @@
       jobs:
         - tox-docs
         - tox-linters
+        - testbed-deploy-full
     gate:
       jobs:
         - tox-docs
         - tox-linters
+        - testbed-deploy-full
     post:
       jobs:
         - testbed-publish-tox-docs
+    periodic-daily:
+      jobs:
+        - testbed-deploy-full
