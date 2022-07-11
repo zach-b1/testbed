@@ -48,15 +48,15 @@ network_ethernets_virtual:
 #       used for nodes with the virtualization role host.
 network_ethernets: "{{ (hostvars[inventory_hostname]['ansible_virtualization_role'] == 'host') | ternary({}, network_ethernets_virtual) }}"
 
-network_dispatcher_scripts:
-  - src: /opt/configuration/network/vxlan.sh
-    dest: routable.d/vxlan.sh
+#network_dispatcher_scripts:
+#  - src: /opt/configuration/network/vxlan.sh
+#    dest: routable.d/vxlan.sh
 
 ##########################################################
 # kolla
 
 network_interface: "{{ ansible_local.testbed_network_devices.management }}"
-neutron_external_interface: vxlan0
+neutron_external_interface: ens4
 octavia_network_interface: ohm0
 
 ##########################################################

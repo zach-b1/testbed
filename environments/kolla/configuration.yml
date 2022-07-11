@@ -75,7 +75,9 @@ keystone_identity_mappings:
 libvirt_enable_sasl: "no"
 
 # neutron
-neutron_plugin_agent: ovn
+#neutron_plugin_agent: ovn
+neutron_plugin_agent: openvswitch
+enable_neutron_bgp_dragent: "yes"
 
 enable_neutron_agent_ha: "yes"
 enable_neutron_qos: "yes"

@@ -40,8 +40,8 @@ network_ethernets:
     gateway4: "192.168.16.1"
     mtu: "{{ testbed_mtu_manager }}"
 network_dispatcher_scripts:
-  - src: /opt/configuration/network/vxlan.sh
-    dest: routable.d/vxlan.sh
+  #- src: /opt/configuration/network/vxlan.sh
+  #  dest: routable.d/vxlan.sh
   - src: /opt/configuration/network/iptables.sh
     dest: routable.d/iptables.sh
 

@@ -14,6 +14,18 @@ resource "openstack_networking_port_v2" "manager_port_management" {
   }
 }
 
+resource "openstack_networking_port_v2" "manager_port_public" {
+  network_id = openstack_networking_network_v2.net_public.id
+  security_group_ids = [
+    openstack_compute_secgroup_v2.security_group_management.id
+  ]
+
+  fixed_ip {
+    ip_address = "192.168.112.5"
+    subnet_id  = openstack_networking_subnet_v2.subnet_public.id
+  }
+}
+
 resource "openstack_blockstorage_volume_v3" "manager_base_volume" {
   count             = 0
   image_id          = data.openstack_images_image_v2.image.id
@@ -34,6 +46,7 @@ resource "openstack_compute_instance_v2" "manager_server" {
   ]
 
   network { port = openstack_networking_port_v2.manager_port_management.id }
+  network { port = openstack_networking_port_v2.manager_port_public.id }
 
   user_data = <<-EOT
 #cloud-config

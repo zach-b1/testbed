@@ -17,6 +17,7 @@ resource "openstack_compute_instance_v2" "node_server" {
   ]
 
   network { port = openstack_networking_port_v2.node_port_management[count.index].id }
+  network { port = openstack_networking_port_v2.node_port_public[count.index].id }
 
   user_data = <<-EOT
 #cloud-config

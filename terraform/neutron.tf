@@ -56,3 +56,36 @@ resource "openstack_networking_subnet_v2" "subnet_management" {
     end   = "192.168.31.250"
   }
 }
+
+resource "openstack_networking_network_v2" "net_public" {
+  name = "net-${var.prefix}-public"
+}
+
+resource "openstack_networking_subnet_v2" "subnet_public" {
+  name            = "subnet-${var.prefix}-public"
+  network_id      = openstack_networking_network_v2.net_public.id
+  cidr            = "192.168.112.0/20"
+  ip_version      = 4
+  no_gateway      = true
+  dns_nameservers = ["0.0.0.0"]
+
+  allocation_pool {
+    start = "192.168.127.200"
+    end   = "192.168.127.250"
+  }
+}
+
+resource "openstack_networking_subnet_v2" "subnet_public_v6" {
+  name              = "subnet-${var.prefix}-public_v6"
+  network_id        = openstack_networking_network_v2.net_public.id
+  cidr              = "2001:db8:0:1::/64"
+  ip_version        = 6
+  ipv6_address_mode = "dhcpv6-stateful"
+  ipv6_ra_mode      = "dhcpv6-stateful"
+  no_gateway        = true
+
+  allocation_pool {
+    start = "2001:db8:0:1::1:1"
+    end   = "2001:db8:0:1::1:1000"
+  }
+}
