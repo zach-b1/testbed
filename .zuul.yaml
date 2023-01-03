@@ -75,6 +75,12 @@
     timeout: 10800
 
 - job:
+    name: testbed-deploy-yoga
+    parent: testbed-deploy
+    vars:
+      openstack_version: yoga
+
+- job:
     name: testbed-upgrade
     parent: testbed-deploy
     run: playbooks/upgrade.yml
