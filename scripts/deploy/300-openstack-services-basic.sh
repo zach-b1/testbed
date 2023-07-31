@@ -16,6 +16,7 @@ osism apply glance
 osism apply cinder
 osism apply designate
 osism apply octavia
+osism apply magnum
 
 if [[ "$REFSTACK" == "false" ]]; then
     osism apply barbican
