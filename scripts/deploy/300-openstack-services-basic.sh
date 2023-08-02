@@ -11,6 +11,7 @@ osism apply placement
 osism apply nova
 osism apply neutron
 
+osism apply ceph-rgw
 osism apply horizon
 osism apply glance
 osism apply cinder

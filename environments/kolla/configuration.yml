@@ -121,3 +121,21 @@ ceph_public_network: 192.168.16.0/20
 # with the testbed.
 om_enable_rabbitmq_high_availability: false
 external_ceph_always_copy_cinder_keyring: "no"
+
+enable_ceph_rgw: true # Feature from Xena onwards
+enable_swift: "no" # Feature for swift on disk, not through ceph.
+enable_swift_s3api: "yes"
+enable_ceph_rgw_keystone: true
+ceph_rgw_swift_compatibility: true
+ceph_rgw_swift_account_in_url: true
+enable_ceph_rgw_loadbalancer: true
+ceph_rgw_hosts:
+  - host: testbed-node-0.testbed.osism.xyz
+    ip: 192.168.16.10
+    port: 8081
+  - host: testbed-node-0.testbed.osism.xyz
+    ip: 192.168.16.11
+    port: 8081
+  - host: testbed-node-0.testbed.osism.xyz
+    ip: 192.168.16.12
+    port: 8081
