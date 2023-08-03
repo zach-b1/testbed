@@ -126,7 +126,7 @@ enable_ceph_rgw: true # Feature from Xena onwards
 enable_swift: "no" # Feature for swift on disk, not through ceph.
 enable_swift_s3api: "yes"
 enable_ceph_rgw_keystone: true
-ceph_rgw_swift_compatibility: true
+ceph_rgw_swift_compatibility: false
 ceph_rgw_swift_account_in_url: true
 enable_ceph_rgw_loadbalancer: true
 ceph_rgw_hosts:
