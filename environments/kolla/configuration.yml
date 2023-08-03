@@ -130,12 +130,12 @@ ceph_rgw_swift_compatibility: true
 ceph_rgw_swift_account_in_url: true
 enable_ceph_rgw_loadbalancer: true
 ceph_rgw_hosts:
-  - host: testbed-node-0.testbed.osism.xyz
+  - host: testbed-node-0
     ip: 192.168.16.10
     port: 8081
-  - host: testbed-node-0.testbed.osism.xyz
+  - host: testbed-node-1
     ip: 192.168.16.11
     port: 8081
-  - host: testbed-node-0.testbed.osism.xyz
+  - host: testbed-node-2
     ip: 192.168.16.12
     port: 8081
