@@ -4,7 +4,7 @@ variable "cloud_provider" {
 
 variable "prefix" {
   type    = string
-  default = "testbed"
+  default = "testbed-zach"
 }
 
 variable "image" {
@@ -89,7 +89,7 @@ variable "openstack_version" {
 
 variable "number_of_nodes" {
   type    = number
-  default = 3
+  default = 8
 }
 
 variable "number_of_volumes" {
